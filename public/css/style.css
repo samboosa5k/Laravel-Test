@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    background-color: silver;
+}
+
+/* SPECIAL NAVIGATION */
+
+.page-title {
+    width: 100%;
+    text-align: center;
+}
+
+.return-navigation {
+    text-align: center;
+}
+
+/* MOVIES */
+
+
+
+.movies-all {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+    justify-content: center;
+}
+
+.movie-single {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    width: 256px;
+    margin: 1rem;
+    padding: 0.5rem;
+    overflow: hidden;
+    background-color: slategray;
+}
+
+.movie-single h2,
+.movie-single p,
+.movie-single a {
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
+
+.movie-image-container {
+    width: 256px;
+    height: 352px;
+    overflow: hidden;
+    background-color: black;
+}
+
+.movie-image {
+    width: 256px;
+    height: auto;
+}
+
+
+
+/* REVIEWS */
+
+
+.movie-review {
+    margin: 1rem;
+    padding: 0.5rem;
+    background-color: white;
+    box-shadow: 2px 2px 2px black;
+}

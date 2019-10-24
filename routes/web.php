@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'IndexController@index');
 
 //  MOVIE API
 Route::get('/api', 'ApiController@index');
@@ -38,5 +36,32 @@ Route::get('/api/morningWorkout/', 'MorningWorkoutController@movies');
 Route::get('/api/morningWorkoutSingleMovie/', 'MorningWorkoutControllerSingleMovie@movie');
 //  End
 
+//  Morning Workout - ELOQUENT 21-10-2019
+Route::post('/api/collection', 'Api\CollectionController@store');
+Route::get('/api/collection/user', 'Api\CollectionController@user_lists');  //  FAIL FAIL FAIL FAIL
+
 Route::get('/test/form', 'ApiController@form');
 Route::post('/test/form', 'ApiController@handleForm');
+
+//  React form posting
+Route::get('/api/eloquentmovie', 'Api\MovieControllerEloquent@index');
+Route::post('/api/eloquentmovie/update', 'Api\MovieControllerEloquent@update');
+
+//  Morning Workout - FAVORITE MOVIES 21-10-2019
+Route::post('/api/movies/favorite/toggle', 'Api\FavoriteMovieController@toggle');
+Route::get('/api/movies/favorite', 'Api\FavoriteMovieController@status');
+
+
+
+
+
+
+
+//  SLAVOR LARAVEL LESSONS - 24-10-2019
+Route::get('/movies', 'NewMovieController@index');
+Route::get('/movies/{id}', 'NewMovieController@show');
+//  for href="{{    route(route name)   }}, you should name routes above like
+//  Route::get('/movies', 'NewMovieController@index')->('route_name');
+Route::get('/movies/{movie}/reviews', 'ReviewController@index');
+Route::get('/movies/{movie}/reviews/create', 'ReviewController@create');
+Route::post('/movies/{movie}/reviews/create', 'ReviewController@store');
