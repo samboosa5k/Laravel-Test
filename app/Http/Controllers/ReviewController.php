@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ReviewRequest;    // Added because of the ReviewRequest class
 
 use App\Movie;
 use App\Review;
@@ -20,8 +21,6 @@ class ReviewController extends Controller
         // $reviews = Review::where('movie_id', $movie)->get();
         $reviews = $movie->reviews()->get(); // Laravel eloquent method
 
-
-
         return view('reviews.index', compact('reviews', 'movie'));
     }
 
@@ -32,6 +31,11 @@ class ReviewController extends Controller
      */
     public function create($movie)
     {
+
+        if (!auth()->check()) {
+            return redirect('ReviewController@index');
+        }
+
         $movie = Movie::findOrFail($movie);
         return view('reviews.create', compact('movie'));
     }
@@ -42,11 +46,21 @@ class ReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $movie)
+    public function store(ReviewRequest $request, $movie)
     {
+        /* VALIDATION LOGIC moved to REVIEWREQUEST.php
+        $this->validate(
+            $request,
+            [
+                //
+                'rating' => 'required|numeric|min:0|max:10',
+                'text' => 'required|min:0|max:128'
+            ]
+        ); */
+
         //dd($movie);
         $review = new Review();
-        $review->user_id = rand(1, 100);
+        $review->user_id = auth()->user()->id;
         $review->movie_id = $movie;
         $review->text = $request->input('text');
         $review->rating = $request->input('rating');

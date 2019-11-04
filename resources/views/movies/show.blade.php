@@ -11,7 +11,7 @@
 
 
     @foreach ($movie->genres as $genre)
-    <p>{{$genre}}</p>
+    <p>{{$genre->name}}</p>
     @endforeach
 
 </div>

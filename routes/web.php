@@ -57,11 +57,20 @@ Route::get('/api/movies/favorite', 'Api\FavoriteMovieController@status');
 
 
 
-//  SLAVOR LARAVEL LESSONS - 24-10-2019
+//  SLAVOR LARAVEL LESSONS - 24-10-2019 _TO_ 25-10-2019
 Route::get('/movies', 'NewMovieController@index');
 Route::get('/movies/{id}', 'NewMovieController@show');
 //  for href="{{    route(route name)   }}, you should name routes above like
 //  Route::get('/movies', 'NewMovieController@index')->('route_name');
 Route::get('/movies/{movie}/reviews', 'ReviewController@index');
-Route::get('/movies/{movie}/reviews/create', 'ReviewController@create');
-Route::post('/movies/{movie}/reviews/create', 'ReviewController@store');
+Route::get('/movies/{movie}/reviews/create', 'ReviewController@create')->middleware('auth');
+Route::post('/movies/{movie}/reviews/create', 'ReviewController@store')->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('new-person', 'NewPersonController');
+
+//  API authentication & passport
+Route::get('/api_login', 'ApiLoginController@index');

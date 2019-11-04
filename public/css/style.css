@@ -22,11 +22,13 @@ body {
 
 
 
-.movies-all {
+.movies-all,
+.reviews-all {
     display: flex;
     flex-wrap: wrap;
     width: 100vw;
     justify-content: center;
+    flex-direction: column;
 }
 
 .movie-single {
@@ -64,9 +66,38 @@ body {
 /* REVIEWS */
 
 
-.movie-review {
+.movie-review,
+.movie-review__form {
     margin: 1rem;
     padding: 0.5rem;
     background-color: white;
     box-shadow: 2px 2px 2px black;
+}
+
+.movie-review__form>div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/* ERRORS */
+
+
+.error {
+    padding: 0.2rem;
+    color: white;
+    background-color: tomato;
+    border: 2px dashed orange;
+}
+
+.error-field {
+    box-shadow: 0 2px 2px red;
+}
+
+/* LOGIN */
+
+#login {
+    margin-left: auto;
+    margin-right: auto;
 }

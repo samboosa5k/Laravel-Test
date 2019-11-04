@@ -6,9 +6,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+//  Added on 3-11-2019, attempt to authenticate through API
+use Laravel\Passport\HasApiTokens;
+
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens /* ESSENTIAL */, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -47,5 +50,10 @@ class User extends Authenticatable
     public function favorite_movies()
     {
         return $this->belongsToMany('App\Movie', 'favorite_movies');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');
     }
 }

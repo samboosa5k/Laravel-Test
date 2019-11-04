@@ -19,7 +19,8 @@ class NewMovieController extends Controller
     {
         $movie = Movie::findOrFail($id);
 
-        //return $movie->genres; // THIS RETURNS ALL ASsociATED GENRES WTF MAGIC
+        // return $movie->genres; // THIS RETURNS ALL ASsociATED GENRES WTF MAGIC
+        //  Not necessary to do in the 'show' blade as you can access $movie->genres in there
 
         return view('movies.show', compact('movie'));
     }
