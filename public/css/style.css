@@ -101,3 +101,9 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+
+.box {
+    width: 512px;
+    padding: 1rem;
+    background-color: antiquewhite;
+}

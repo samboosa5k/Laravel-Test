@@ -74,3 +74,10 @@ Route::resource('new-person', 'NewPersonController');
 
 //  API authentication & passport
 Route::get('/api_login', 'ApiLoginController@index');
+
+//  Passport controller
+Route::group([
+    'middleware' => 'auth:api'
+], function () {
+    Route::get('/management', 'ManagementController@index');
+});
